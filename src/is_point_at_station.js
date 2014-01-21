@@ -10,6 +10,7 @@
 
 var mongodb = require('mongodb');
 var dbconfig = require('dbconfig');
+var bikewarn = require('bikewarn');
 
 var dburl = dbconfig.dburl;
 var stations_collection = dbconfig.stations_collection;
@@ -20,30 +21,19 @@ var MongoClient = mongodb.MongoClient
 var longitude = Number(process.argv[2]);
 var latitude = Number(process.argv[3]);
 
+
 MongoClient.connect(dburl, function(err, db) 
 {
   if(err) throw err;
 
-  var collection = db.collection(stations_collection);
-  var query = { location: { "$near": { "$geometry": { type: "Point", coordinates: [ longitude, latitude ] } }, "$maxDistance": 50 } }
-  collection.find(query , function(err, cursor) 
-  {
-    if (err) throw err;
-
-    cursor.toArray(function(err, result)
-    {
-      if (err) throw err;
-      if(result.length > 0)
-      {
+  bikewarn.is_point_at_station(db, longitude, latitude, function(err) { 
         process.stdout.write("true\n");
+        db.close();
         process.exit(0);
-      }
-        else
-      {
+     }, function(err) { 
         process.stdout.write("false\n");
+        db.close();
         process.exit(1);
-      }
-      db.close();
-    });
-  });
+     });
 });
+
