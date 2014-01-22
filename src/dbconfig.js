@@ -5,6 +5,7 @@ var dbuser = '';
 var dbpass = '';
 var dboptions = '';
 var stations_collection = 'stations';
+var users_collection = 'users';
 
 
 var dbuserpass = '';
@@ -28,4 +29,5 @@ module.exports.dbuser = dbuser;
 module.exports.dbpass = dbpass;
 module.exports.dboptions = dboptions;
 module.exports.stations_collection = stations_collection;
+module.exports.users_collection = users_collection;
 module.exports.dburl = dburl;
