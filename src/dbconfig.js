@@ -1,4 +1,4 @@
-var dbname = "bikewarn";
+var dbname = "sharewarn";
 var dbserver = "localhost";
 var dbport = 27017;
 var dbuser = '';

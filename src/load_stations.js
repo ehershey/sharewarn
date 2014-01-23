@@ -10,7 +10,7 @@ var station_url = 'http://citibikenyc.com/stations/json/';
 
 // set database options
 //
-var dbname = "bikewarn";
+var dbname = "sharewarn";
 var dbserver = "localhost";
 var dbport = 27017;
 

@@ -1,5 +1,5 @@
 {
-  "name": "bikewarn",
+  "name": "sharewarn",
   "version": "0.0.1",
   "description": "Notify you when you're close to exceeding bikesharing time limits",
   "main": "index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ehershey/bikewarn.git"
+    "url": "git://github.com/ehershey/sharewarn.git"
   },
   "keywords": [
     "biking",
@@ -25,7 +25,7 @@
   "author": "Ernie Hershey <github@ernie.org>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/ehershey/bikewarn/issues"
+    "url": "https://github.com/ehershey/sharewarn/issues"
   },
-  "homepage": "https://github.com/ehershey/bikewarn"
+  "homepage": "https://github.com/ehershey/sharewarn"
 }

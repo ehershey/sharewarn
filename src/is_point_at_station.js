@@ -10,7 +10,7 @@
 
 var mongodb = require('mongodb');
 var dbconfig = require('dbconfig');
-var bikewarn = require('bikewarn');
+var sharewarn = require('sharewarn');
 
 var dburl = dbconfig.dburl;
 var stations_collection = dbconfig.stations_collection;
@@ -26,7 +26,7 @@ MongoClient.connect(dburl, function(err, db)
 {
   if(err) throw err;
 
-  bikewarn.is_point_at_station(db, longitude, latitude, function(err) { 
+  sharewarn.is_point_at_station(db, longitude, latitude, function(err) { 
         process.stdout.write("true\n");
         db.close();
         process.exit(0);
