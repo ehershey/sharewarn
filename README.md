@@ -20,3 +20,8 @@ Output
 3. Native mobile app notification
 4. Email
 
+
+Keywords
+--------
+Automatic bike share timer
+Automatic bike share notifications
