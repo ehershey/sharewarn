@@ -4,40 +4,14 @@
 
 var request = require('request');
 var mongodb = require('mongodb');
-// var dbconfig = require('dbconfig');
+var dbconfig = require('dbconfig');
 
-var station_url = 'http://citibikenyc.com/stations/json/';
+var externalconfig = require('externalconfig');
 
-// set database options
-//
-var dbname = "sharewarn";
-var dbserver = "localhost";
-var dbport = 27017;
+var station_url = externalconfig.citibike.station_url;
 
-var dbuser = '';
-var dbpass = '';
-
-var dboptions = '';
-
-var stations_collection = "stations";
-
-// process database options
-// 
-
-var dbuserpass = '';
-
-if(dbuser && dbpass)
-{
-  dbuserpass = dbuser + ':' + dbpass + '@';
-}
-
-if(dboptions) { 
-  dboptions = '?' + dboptions;
-}
-
-var dburl = 'mongodb://' + dbuserpass + dbserver + ':' + dbport + '/' + dbname + dboptions;
-
-console.log('dburl: ' + dburl);
+var dburl = dbconfig.dburl;
+var stations_collection = dbconfig.stations_collection;
 
 var now = new Date();
 
