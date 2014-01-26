@@ -4,7 +4,8 @@ var users_collection = dbconfig.users_collection;
 
 module.exports = {
   is_point_at_station: is_point_at_station,
-  get_user: get_user
+  get_user: get_user,
+  for_each_user: for_each_user
 }
 function is_point_at_station(db, longitude, latitude, yes_callback, no_callback) { 
 
@@ -51,4 +52,13 @@ function get_user(db, username, callback) {
       }
     });
   });
+}
+
+function for_each_user(db, callback) {
+  var collection = db.collection(users_collection);
+  collection.find({}, function(err, cursor)
+      {
+        if(err) throw err;
+        cursor.each(callback);
+      });
 }
