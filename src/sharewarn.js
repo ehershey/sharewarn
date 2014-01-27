@@ -5,7 +5,8 @@ var users_collection = dbconfig.users_collection;
 module.exports = {
   is_point_at_station: is_point_at_station,
   get_user: get_user,
-  for_each_user: for_each_user
+  for_each_user: for_each_user,
+  date_from_moves_date: date_from_moves_date
 }
 
 function is_point_at_station(db, longitude, latitude, yes_callback, no_callback) 
