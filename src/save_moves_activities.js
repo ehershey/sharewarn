@@ -71,6 +71,7 @@ MongoClient.connect(dburl, function(err, db)
         {
           total_activity_count++;
           var activity = activities[k];
+          activity.user_id = user._id;
           add_station_info(db, activity, function(err, activity) {
             if(err) throw err;
             save_activity(db, activity);
