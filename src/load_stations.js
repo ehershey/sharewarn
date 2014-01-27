@@ -109,7 +109,7 @@ function save_station(db,station)
       //   location : { type : "Point" ,
       //           coordinates : [ 40, 5 ]
       //         },
-      station.location = { type: "Point", coordinates: [ station.latitude, station.longitude ] }
+      station.location = { type: "Point", coordinates: [ station.longitude, station.latitude ] }
       station.latitude = null;
       station.longitude = null;
 
