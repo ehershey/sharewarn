@@ -7,7 +7,9 @@ module.exports = {
   get_user: get_user,
   for_each_user: for_each_user
 }
-function is_point_at_station(db, longitude, latitude, yes_callback, no_callback) { 
+
+function is_point_at_station(db, longitude, latitude, yes_callback, no_callback) 
+{ 
 
   var collection = db.collection(stations_collection);
   var query = { location: { "$near": { "$geometry": { type: "Point", coordinates: [ longitude, latitude ] } }, "$maxDistance": 50 } }
