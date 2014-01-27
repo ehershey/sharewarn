@@ -1,4 +1,4 @@
-var dbconfig = require('dbconfig');
+var dbconfig = require('../src/dbconfig');
 var stations_collection = dbconfig.stations_collection;
 var users_collection = dbconfig.users_collection;
 
@@ -70,5 +70,5 @@ function for_each_user(db, callback)
 
 function date_from_moves_date(datestring)
 {
-  return datestring.replace(/^(\d\d\d\d)(\d\d)(\d\dT\d\d)(\d\d)(\d\dZ)$/,'$1-$2-$3:$4:$5');
+  return new Date(datestring.replace(/^(\d\d\d\d)(\d\d)(\d\dT\d\d)(\d\d)(\d\dZ)$/,'$1-$2-$3:$4:$5'));
 }

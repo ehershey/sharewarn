@@ -2,6 +2,19 @@
 'use strict';
 // Save moves activities for all users to the db
 //
+// Modifications made to objects received from Moves:
+// 1) Whether start and end points for an activity
+// are at bike share stations (is_start_at_station and 
+// is_end_at_station)
+//
+// 2) Metadata about the first and last time the same 
+// activity entity has been seen by the system
+//
+// 3) Date objects for activity objects and track
+// points
+//
+// 4) The field user_id: user._id for the user owning 
+// the activity
 
 var async = require('async');
 var mongodb = require('mongodb');
@@ -72,9 +85,16 @@ MongoClient.connect(dburl, function(err, db)
           total_activity_count++;
           var activity = activities[k];
           activity.user_id = user._id;
+          activity.startTime = sharewarn.date_from_moves_date(activity.startTime);
+          activity.endTime = sharewarn.date_from_moves_date(activity.endTime);
+          for(var l = 0 ; l < activity.trackPoints.length ; l++)
+          {
+            activity.trackPoints[l].time = sharewarn.date_from_moves_date(activity.trackPoints[l].time);
+          }
+
           add_station_info(db, activity, function(err, activity) {
             if(err) throw err;
-            save_activity(db, activity);
+            save_activity(db, user, activity);
           });
         } // for each activity
       } // for each segment
@@ -83,12 +103,12 @@ MongoClient.connect(dburl, function(err, db)
 }); // db connect callback
 
 
-function save_activity(db,activity) 
+function save_activity(db, user, activity) 
 {
 
   var collection = db.collection("activities");
 
-  collection.find({ startTime: activity.startTime}, function(err, cursor) 
+  collection.find({ user_id: user._id, startTime: activity.startTime}, function(err, cursor) 
   {
     if (err) throw err;
 
