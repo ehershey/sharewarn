@@ -33,7 +33,8 @@ function is_point_at_station(db, longitude, latitude, yes_callback, no_callback)
 }
 
 
-function get_user(db, username, callback) { 
+function get_user(db, username, callback)
+{ 
 
   var collection = db.collection(users_collection);
   var query = { username: username }
@@ -56,11 +57,17 @@ function get_user(db, username, callback) {
   });
 }
 
-function for_each_user(db, callback) {
+function for_each_user(db, callback) 
+{
   var collection = db.collection(users_collection);
   collection.find({}, function(err, cursor)
       {
         if(err) throw err;
         cursor.each(callback);
       });
+}
+
+function date_from_moves_date(datestring)
+{
+  return datestring.replace(/^(\d\d\d\d)(\d\d)(\d\dT\d\d)(\d\d)(\d\dZ)$/,'$1-$2-$3:$4:$5');
 }
