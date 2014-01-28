@@ -23,8 +23,8 @@ var activities_collection = dbconfig.activities_collection;
 var MongoClient = mongodb.MongoClient
   , Server = mongodb.Server;
 
-var now = new Date("1/24/2014 12:00:00");
-// var now = new Date();
+// var now = new Date("1/27/2014 22:00:00");
+var now = new Date();
 
 var username = 'ernie';
 
@@ -34,8 +34,8 @@ MongoClient.connect(dburl, function(err, db)
   sharewarn.get_user(db, username,function(err, user) 
   { 
     if(err) throw err;
-    console.log('username: ' + user.username);
-    console.log('preferences.hard_limit_minutes: ' + user.preferences.hard_limit_minutes);
+    // console.log('username: ' + user.username);
+    // console.log('preferences.hard_limit_minutes: ' + user.preferences.hard_limit_minutes);
     var user_id = user._id;
     var hard_limit_minutes = user.preferences.hard_limit_minutes;
 
@@ -45,7 +45,7 @@ MongoClient.connect(dburl, function(err, db)
 
     // get ride starts:
     var query = { user_id: user_id, "$or": [ { startTime: { "$gte": past_limit} }, { endTime: { "$gte": past_limit } } ] };
-    console.log('query: ' + JSON.stringify(query,null,2));
+    // console.log('query: ' + JSON.stringify(query,null,2));
 
     var collection = db.collection(activities_collection);
     collection.find(query , function(err, cursor) 
@@ -54,7 +54,7 @@ MongoClient.connect(dburl, function(err, db)
 
       cursor.toArray(function(err, result)
       {
-        console.log('result.length: ' + result.length);
+        // console.log('result.length: ' + result.length);
         var most_recent_ride_start_time;
         var most_recent_ride_end_time;
 
@@ -121,8 +121,21 @@ MongoClient.connect(dburl, function(err, db)
         }
  
 
-        console.log('most_recent_ride_end_time: ' + most_recent_ride_end_time);
-        console.log('most_recent_ride_start_time: ' + most_recent_ride_start_time);
+        // console.log('most_recent_ride_end_time: ' + most_recent_ride_end_time);
+        // console.log('most_recent_ride_start_time: ' + most_recent_ride_start_time);
+
+        // I am riding if there's a start and no end
+        // or if the start is more recent than the end
+        if(most_recent_ride_start_time && !most_recent_ride_end_time || 
+           most_recent_ride_start_time > most_recent_ride_end_time)
+        {
+          process.stdout.write("yes\n");
+        }
+        else
+        {
+          process.stdout.write("no\n");
+        }
+          
         process.exit();
       });
     });
