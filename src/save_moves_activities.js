@@ -29,8 +29,9 @@ var activities_collection = dbconfig.activities_collection;
 var MongoClient = mongodb.MongoClient
   , Server = mongodb.Server;
 
-//var now = new Date();
-var now = new Date("1/24/2014 12:00:00");
+var now = new Date();
+// var now = new Date("1/27/2014 12:00:00");
+// var now = new Date("1/24/2014 12:00:00");
 
 var last_seen = now;
 
