@@ -24,6 +24,7 @@ var dbconfig = require('dbconfig');
 
 
 var dburl = dbconfig.dburl;
+var activities_collection = dbconfig.activities_collection;
 
 var MongoClient = mongodb.MongoClient
   , Server = mongodb.Server;
@@ -106,7 +107,7 @@ MongoClient.connect(dburl, function(err, db)
 function save_activity(db, user, activity) 
 {
 
-  var collection = db.collection("activities");
+  var collection = db.collection(activities_collection);
 
   collection.find({ user_id: user._id, startTime: activity.startTime}, function(err, cursor) 
   {
