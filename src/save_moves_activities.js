@@ -30,7 +30,7 @@ var MongoClient = mongodb.MongoClient
   , Server = mongodb.Server;
 
 var now = new Date();
-// var now = new Date("1/27/2014 12:00:00");
+var now = new Date("1/28/2014 23:00:00");
 // var now = new Date("1/24/2014 12:00:00");
 
 var last_seen = now;
@@ -81,6 +81,7 @@ MongoClient.connect(dburl, function(err, db)
         var activities = segment.activities;
 
         if(!activities) { activities = [] }
+        console.log('activities.length: ' + activities.length);
         
         for(var k = 0 ; k < activities.length ; k++) 
         {
@@ -100,6 +101,7 @@ MongoClient.connect(dburl, function(err, db)
           });
         } // for each activity
       } // for each segment
+      cleanup_db_connection(db);
   }); // request
 }); // for_each_user callback
 }); // db connect callback
