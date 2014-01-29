@@ -30,8 +30,11 @@ var MongoClient = mongodb.MongoClient
   , Server = mongodb.Server;
 
 var now = new Date();
-var now = new Date("1/28/2014 23:00:00");
-// var now = new Date("1/24/2014 12:00:00");
+if(process.argv[2])
+{
+  now = new Date(process.argv[2]);
+  process.stdout.write("overriding now to: " + now + "\n");
+}
 
 var last_seen = now;
 

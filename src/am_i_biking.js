@@ -23,8 +23,12 @@ var activities_collection = dbconfig.activities_collection;
 var MongoClient = mongodb.MongoClient
   , Server = mongodb.Server;
 
-// var now = new Date("1/27/2014 22:00:00");
 var now = new Date();
+if(process.argv[2])
+{
+  now = new Date(process.argv[2]);
+  process.stdout.write("overriding now to: " + now + "\n");
+}
 
 var username = 'ernie';
 
