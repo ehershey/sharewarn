@@ -125,8 +125,8 @@ MongoClient.connect(dburl, function(err, db)
         }
  
 
-        // console.log('most_recent_ride_end_time: ' + most_recent_ride_end_time);
-        // console.log('most_recent_ride_start_time: ' + most_recent_ride_start_time);
+        console.log('most_recent_ride_end_time: ' + most_recent_ride_end_time);
+        console.log('most_recent_ride_start_time: ' + most_recent_ride_start_time);
 
         // I am riding if there's a start and no end
         // or if the start is more recent than the end
