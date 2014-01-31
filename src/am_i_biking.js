@@ -27,7 +27,7 @@ var now = new Date();
 if(process.argv[2])
 {
   now = new Date(process.argv[2]);
-  process.stdout.write("overriding now to: " + now + "\n");
+  process.stderr.write("overriding now to: " + now + "\n");
 }
 
 var username = 'ernie';
@@ -125,8 +125,8 @@ MongoClient.connect(dburl, function(err, db)
         }
  
 
-        console.log('most_recent_ride_end_time: ' + most_recent_ride_end_time);
-        console.log('most_recent_ride_start_time: ' + most_recent_ride_start_time);
+        process.stderr.write('most_recent_ride_end_time: ' + most_recent_ride_end_time + "\n");
+        process.stderr.write('most_recent_ride_start_time: ' + most_recent_ride_start_time + "\n");
 
         // I am riding if there's a start and no end
         // or if the start is more recent than the end
