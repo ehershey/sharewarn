@@ -50,6 +50,7 @@ MongoClient.connect(dburl, function(err, db)
 
   sharewarn.for_each_user(db, function(err,user) 
   {
+    console.log('in for each');
     if (err) throw err;
     if(!user) return;
 
@@ -107,6 +108,9 @@ MongoClient.connect(dburl, function(err, db)
       cleanup_db_connection(db);
   }); // request
 }); // for_each_user callback
+
+    console.log('after for each');
+      cleanup_db_connection(db);
 }); // db connect callback
 
 
@@ -174,6 +178,7 @@ var called_db_close = false;
 
 function cleanup_db_connection(db) {
   setTimeout(function() { 
+    console.log('checking in cleanup_db_connection');
     // console.log('wrote_station_count: ' + wrote_station_count);
     // console.log('total_station_count: ' + total_station_count);
     if(called_db_close) {
