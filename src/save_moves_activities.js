@@ -56,6 +56,8 @@ MongoClient.connect(dburl, function(err, db)
 
     var moves_access_token = user.moves_access_token;
 
+    if(!moves_access_token) return;
+
     var request_year = now.getFullYear();
     var request_month = now.getMonth() + 1;
     if(request_month < 10) request_month = "0" + request_month;
