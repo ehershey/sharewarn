@@ -1,6 +1,15 @@
 var express = require('express');
 var os = require('os');
 var app = express();
+
+app.use(express.logger('dev'));
+
+app.use(express.static(__dirname + '/../webapp/static'));
+
+app.use(app.router);
+
+
+
 app.get('/hello.txt', function(req, res){
   res.send('Hello World');
 });
