@@ -25,3 +25,8 @@ Keywords
 --------
 Automatic bike share timer
 Automatic bike share notifications
+
+
+Build Status
+------------
+[![Build Status](https://travis-ci.org/ehershey/sharewarn.png?branch=master)](https://travis-ci.org/ehershey/sharewarn)
