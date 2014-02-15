@@ -19,8 +19,8 @@
 var async = require('async');
 var mongodb = require('mongodb');
 var request = require('request');
-var sharewarn = require('sharewarn');
-var dbconfig = require('dbconfig');
+var sharewarn = require('./../lib/sharewarn');
+var dbconfig = require('./../lib/dbconfig');
 
 
 var dburl = dbconfig.dburl;
