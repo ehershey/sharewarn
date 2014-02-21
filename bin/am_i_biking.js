@@ -12,10 +12,10 @@
 //
 //
 
-var dbconfig = require('dbconfig');
 var request = require('request');
 var mongodb = require('mongodb');
-var sharewarn = require('sharewarn');
+var sharewarn = require('./../lib/sharewarn');
+var dbconfig = require('./../lib/dbconfig');
 
 var dburl = dbconfig.dburl;
 var activities_collection = dbconfig.activities_collection;

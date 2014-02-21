@@ -25,3 +25,10 @@ child = exec('bin/save_moves_activities.js',
     console.log('stderr: ' + stderr);
     assert.ifError(error);
 });
+
+child = exec('bin/am_i_biking.js',
+  function (error, stdout, stderr) {
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+    assert.ifError(error);
+});
