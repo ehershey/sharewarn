@@ -34,6 +34,7 @@ var username = 'ernie';
 
 MongoClient.connect(dburl, function(err, db) 
 {
+  if(err) throw err;
   
   sharewarn.get_user(db, username,function(err, user) 
   { 
