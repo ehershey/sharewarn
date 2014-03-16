@@ -1,0 +1,10 @@
+{ 
+  username: "ernie",
+  email: "sharewarn@ernie.org", 
+  moves_access_token: "xxx",
+  preferences: 
+  { 
+    warn_minutes: 40,
+    hard_limit_minutes: 45
+  }
+}
