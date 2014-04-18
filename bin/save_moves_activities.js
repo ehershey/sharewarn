@@ -214,7 +214,7 @@ function add_station_info(db, activity, callback) {
 
   var trackPoints = activity.trackPoints;
 
-  if(!trackPoints || !trackPoints.length) { callback(null,activity); }
+  if(!trackPoints || !trackPoints.length) { callback(null,activity); return;}
   console.log('trackPoints.length: ' + trackPoints.length);
   console.log('activity.activity: ' + activity.activity);
 
